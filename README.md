@@ -145,14 +145,6 @@ This way you can define your type using the guards.
 You can combine guards together using andX or orX:
 
 ```typescript
-
-```
-
-### Composition
-
-You can combine your guards to create new ones:
-
-```typescript
 const isIdentifiable = isObjectWithShape({
   id: isString
 });
@@ -160,6 +152,10 @@ const isUser = andX(isIdentifiable, isObjectWithShape({
   username: string
 }));
 ```
+
+### Composition
+
+You can combine your guards to create new ones:
 
 ```typescript
 const isApiResponse = isObjectWithShape({
@@ -172,7 +168,6 @@ const isUserApiResponse = andX(isApiResponse, isObjectWithShape({
 
 type UserApiResponse = GetType<typeof isUserApiResponse>;
 ```
-
 
 ### NPM scripts
 
