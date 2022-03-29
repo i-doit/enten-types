@@ -1,6 +1,6 @@
 import { Guard } from '../types';
 
-const isObject = (obj: unknown): obj is object => typeof obj === 'object';
+const isObject = (obj: unknown): obj is object => typeof obj === 'object' && !Array.isArray(obj);
 
 type ValidatorMap<T> = {
   [key in keyof T]: Guard<T[key]>
