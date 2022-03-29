@@ -1,6 +1,6 @@
 {
   "name": "enten-types",
-  "version": "0.0.0-development",
+  "version": "0.0.0",
   "description": "Enten Types is a library to create type-safe guards to check the shape of unknown data",
   "keywords": [],
   "main": "dist/index.umd.js",
