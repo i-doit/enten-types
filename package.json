@@ -27,7 +27,7 @@
     "test:watch": "jest --coverage --watch",
     "test:prod": "npm run lint && npm run test -- --no-cache",
     "commit": "git-cz",
-    "semantic-release": "semantic-release",
+    "release": "standard-version",
     "precommit": "lint-staged"
   },
   "lint-staged": {
@@ -68,14 +68,18 @@
       "!src/**/index.ts"
     ]
   },
-  "prettier": {
-    "semi": false,
-    "singleQuote": true
-  },
   "commitlint": {
     "extends": [
       "@commitlint/config-conventional"
     ]
+  },
+  "husky": {
+    "hooks": {
+      "pre-commit": "lint-staged",
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "post-commit": "git update-index --again",
+      "pre-push": "npm run test"
+    }
   },
   "devDependencies": {
     "@commitlint/cli": "^16.2.3",
@@ -84,7 +88,7 @@
     "@types/node": "^17.0.23",
     "colors": "^1.4.0",
     "cross-env": "^7.0.3",
-    "husky": "^7.0.4",
+    "husky": "^4.3.8",
     "jest": "^27.5.1",
     "jest-config": "^27.5.1",
     "lint-staged": "^12.3.7",
@@ -99,8 +103,8 @@
     "rollup-plugin-node-resolve": "^5.2.0",
     "rollup-plugin-sourcemaps": "^0.6.3",
     "rollup-plugin-typescript2": "^0.31.2",
-    "semantic-release": "^19.0.2",
     "shelljs": "^0.8.5",
+    "standard-version": "^9.3.2",
     "ts-jest": "^27.1.4",
     "ts-node": "^10.7.0",
     "tslint": "^6.1.3",
