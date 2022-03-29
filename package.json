@@ -1,5 +1,5 @@
 {
-  "name": "enten-types",
+  "name": "@i-doit/enten-types",
   "version": "1.0.0",
   "description": "Enten Types is a library to create type-safe guards to check the shape of unknown data",
   "keywords": [],
