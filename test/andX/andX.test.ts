@@ -1,4 +1,4 @@
-import { andX, isNumber, isObjectWithShape, isString } from '../../src/enten-types';
+import { andX, isNumber, isObjectWithShape, isString } from '../../src';
 
 describe('and', () => {
   const isId = isObjectWithShape({

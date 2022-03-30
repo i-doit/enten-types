@@ -1,12 +1,4 @@
-import {
-  isMapOf,
-  isNumber,
-  isObject,
-  isObjectWithShape,
-  isString,
-  optional,
-} from '../../src/enten-types';
-import { Guard } from '../../src/types';
+import { Guard, isMapOf, isNumber, isObject, isObjectWithShape, isString, optional } from '../../src';
 
 describe('is object', () => {
   it.each([
@@ -36,9 +28,11 @@ describe('is object', () => {
     ['string', false],
     [new Date(), false],
   ])('is object of checks the shape', (value: unknown, expected: boolean) => {
-    expect(isObjectWithShape({
-      a: isString,
-    })(value)).toBe(expected);
+    expect(
+      isObjectWithShape({
+        a: isString,
+      })(value),
+    ).toBe(expected);
   });
 
   it.each([

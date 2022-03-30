@@ -1,9 +1,9 @@
-import { orX, isNumber, isObjectWithShape, isString } from '../../src/enten-types';
+import { orX, isNumber, isObjectWithShape, isString } from '../../src';
 
 describe('or', () => {
   const isUser = isObjectWithShape({
     id: isNumber,
-    title: isString
+    title: isString,
   });
   const isRole = isObjectWithShape({
     id: isString,

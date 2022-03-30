@@ -1,4 +1,4 @@
-import { isArray, isArrayOf, isString } from '../../src/enten-types';
+import { isArray, isArrayOf, isString } from '../../src';
 
 describe('is array', () => {
   it.each([
