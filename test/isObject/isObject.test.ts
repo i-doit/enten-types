@@ -1,4 +1,4 @@
-import { Guard, isMapOf, isNumber, isObject, isObjectWithShape, isString, optional } from '../../src';
+import { Guard, isMapOf, isNumber, isObject, isObjectWithShape, isString, optional, optionalNull } from '../../src';
 
 describe('is object', () => {
   it.each([
@@ -17,6 +17,7 @@ describe('is object', () => {
 
   it.each([
     [[], false],
+    [null, false],
     [[1, 2, 3], false],
     [['a', 'b', 'c'], false],
     [{ a: 1 }, false],
@@ -55,6 +56,7 @@ describe('is object', () => {
     name: isString,
     id: isNumber,
     title: optional(isString),
+    nullable: optionalNull(isString),
   });
 
   it.each([
@@ -62,6 +64,9 @@ describe('is object', () => {
     [{ name: 'test' }, isUser, false],
     [{ name: 12 }, isUser, false],
     [{ name: 'test', id: 1 }, isUser, true],
+    [{ name: 'test', id: 1, nullable: null }, isUser, true],
+    [{ name: 'test', id: 1, nullable: 'test' }, isUser, true],
+    [{ name: 'test', id: 1, title: null }, isUser, false],
     [{ name: 'test', id: 'test' }, isUser, false],
     [{ name: 'test', id: 1, title: 'test' }, isUser, true],
     [{ name: 'test', id: 1, title: 123 }, isUser, false],

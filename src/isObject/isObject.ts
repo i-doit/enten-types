@@ -1,45 +1,45 @@
 import { Guard } from '../types';
 
-const isObject = (obj: unknown): obj is object => typeof obj === 'object' && !Array.isArray(obj);
+const isObject = (obj: unknown): obj is object => typeof obj === 'object' && obj !== null && !Array.isArray(obj);
 
 type ValidatorMap<T> = {
-  [key in keyof T]: Guard<T[key]>
+  [key in keyof T]: Guard<T[key]>;
 };
 
-const isObjectWithShape = <T>(fields: ValidatorMap<T>) => (obj: unknown): obj is T => {
-  if (!isObject(obj)) {
-    return false;
-  }
-
-  for (let field in fields) {
-    // @ts-ignore
-    const value = obj[field];
-
-    if (!fields[field](value)) {
+const isObjectWithShape =
+  <T>(fields: ValidatorMap<T>) =>
+  (obj: unknown): obj is T => {
+    if (!isObject(obj)) {
       return false;
     }
-  }
 
-  return true;
-};
+    for (let field in fields) {
+      // @ts-ignore
+      const value = obj[field];
 
-const isMapOf = <T>(validator: Guard<T>) => (obj: unknown): obj is Record<string, T> => {
-  if (!isObject(obj)) {
-    return false;
-  }
+      if (!fields[field](value)) {
+        return false;
+      }
+    }
 
-  for (let key in obj) {
-    // @ts-ignore
-    if (!validator(obj[key])) {
+    return true;
+  };
+
+const isMapOf =
+  <T>(validator: Guard<T>) =>
+  (obj: unknown): obj is Record<string, T> => {
+    if (!isObject(obj)) {
       return false;
     }
-  }
 
-  return true;
-};
+    for (let key in obj) {
+      // @ts-ignore
+      if (!validator(obj[key])) {
+        return false;
+      }
+    }
 
-export {
-  isObject,
-  isObjectWithShape,
-  isMapOf,
-};
+    return true;
+  };
+
+export { isObject, isObjectWithShape, isMapOf };

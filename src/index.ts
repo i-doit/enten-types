@@ -6,5 +6,6 @@ export * from './isNumber';
 export * from './isObject';
 export * from './isString';
 export * from './Optional';
+export * from './nullable';
 export * from './orX';
 export * from './types';
