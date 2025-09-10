@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [1.0.7](https://github.com/i-doit/enten-types/compare/v1.0.6...v1.0.7) (2025-09-10)
+
+
+### Bug Fixes
+
+* **types:** fix handling of optional and isObject ([50e945e](https://github.com/i-doit/enten-types/commit/50e945ea197763f46c4407fcee23c923e8ec0ff4))
+
 ### [1.0.4](https://github.com/i-doit/enten-types/compare/v1.0.3...v1.0.4) (2022-05-10)
 
 
